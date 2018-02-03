@@ -6,24 +6,50 @@ const readFile = util.promisify(fs.readFile);
 
 class Contact {
 	constructor(obj) {
-		if(!obj || !obj.name)
-			throw "Name is needed to create a new person.";
+		if(!obj)
+			throw "Need object to initialize values from.";
 
 		this.name = obj.name;
 		this.age = obj.age;
-		this._phone = obj.phone;
+		this.phone = obj.phone;
 	};
   // addPhone(number) {
 
   //     return this.phone = number;
   // }
+  get name() {
+  	return this._name;
+  }
+
+  set name(name){
+    if (!name){
+			throw "Name is needed to create a new person.";
+    }
+    if (typeof name !== "string"){
+      throw "Name needs to be string";
+    }
+    if (name.length <= 3){
+      throw "Name needs to be atleast 4 characters long"
+    }
+  	this._name = name;
+  }
 
   get phone(){
   	return this._phone;
   }
 
   set phone(number){
-  	this._phone = number;
+    if (typeof number !== 'string' && typeof number !== 'number'){
+      console.log("inde: " + typeof number);
+      throw "Phone number needs to be string or number";
+    }
+    
+    let temp = number.toString();
+    
+    if (temp.length !== 8){
+      throw "Phone number needs to be 8 digits long."
+    }
+    this._phone = temp;
   }
 
   call() {

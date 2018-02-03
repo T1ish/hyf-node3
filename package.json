@@ -1,0 +1,22 @@
+{
+  "name": "hyf-node3",
+  "version": "1.0.0",
+  "description": "Exercise for Node week 3\u001b[H\u001b[F",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node .",
+    "watch": "babel -w src/ -d dist/ --source-maps",
+    "build": "babel src/ -d dist/ --source-maps",
+    "server": "nodemon"
+  },
+  "author": "T1ish",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "nodemon": "^1.14.12"
+  }
+}

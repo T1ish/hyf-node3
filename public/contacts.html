@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>All Contacts</title>
+</head>
+<body>
+	<script type="text/javascript">
+		fetch("/all-contacts")
+		.then(res => res.json())
+		.then(responseObject => {
+			const contactListShow = document.querySelector("#contacts");
+			contactListShow.innerHTML = null;
+
+			for(let i = 0; i < responseObject.length; i++ ){
+				const contact = document.createElement("li");
+				contact.innerHTML = `${responseObject[i].name} is ${responseObject[i].age} years old.`;
+				console.log(responseObject[i]);
+				contactListShow.appendChild(contact);
+			}
+			console.log(responseObject);
+		});
+	</script>
+	<div id="contacts"></div>
+</body>
+</html>
